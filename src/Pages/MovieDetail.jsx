@@ -58,6 +58,47 @@ const MovieDetail = () => {
                 </div>
             </div>
 
+            {/* Trailer & Showtimes Section */}
+            <div className="trailer-showtime-section">
+                <div className="trailer-box">
+                    <h3>Watch Trailer</h3>
+                    <div className="video-container">
+                        <iframe
+                            src={movie.trailerUrl}
+                            title={movie.title}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                </div>
+                <div className="showtime-box">
+                    <h3>Showtimes & Tickets</h3>
+                    <p className="date-display">Today, {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</p>
+
+                    <div className="theatre-list">
+                        <div className="theatre-item">
+                            <h4>QFX Cinemas</h4>
+                            <div className="time-grid">
+                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">10:30 AM</button>
+                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">01:15 PM</button>
+                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">04:45 PM</button>
+                            </div>
+                        </div>
+
+                        <div className="theatre-item">
+                            <h4>Big Movies</h4>
+                            <div className="time-grid">
+                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">11:00 AM</button>
+                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">03:30 PM</button>
+                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">07:00 PM</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <style>{`
                 .detail-page {
                     min-height: 100vh;
@@ -90,6 +131,7 @@ const MovieDetail = () => {
                 .content-wrapper {
                     display: flex;
                     gap: 50px;
+                    margin-bottom: 60px;
                 }
                 .poster-section img {
                     width: 300px;
@@ -157,6 +199,86 @@ const MovieDetail = () => {
                     background: var(--primary-hover);
                     transform: translateY(-2px);
                 }
+
+                /* Trailer & Showtimes */
+                .trailer-showtime-section {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                    gap: 40px;
+                    background: var(--surface);
+                    padding: 30px;
+                    border-radius: 20px;
+                    border: 1px solid rgba(255,255,255,0.05);
+                }
+                .trailer-box h3, .showtime-box h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 20px;
+                    border-left: 4px solid var(--primary);
+                    padding-left: 15px;
+                }
+                .video-container {
+                    position: relative;
+                    padding-bottom: 56.25%; /* 16:9 */
+                    height: 0;
+                    overflow: hidden;
+                    border-radius: 12px;
+                    background: black;
+                }
+                .video-container iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                .showtime-box {
+                    padding-left: 20px;
+                    border-left: 1px solid rgba(255,255,255,0.1);
+                }
+                .date-display {
+                    color: var(--text-secondary);
+                    margin-bottom: 20px;
+                    font-size: 1.1rem;
+                }
+                .theatre-item {
+                    margin-bottom: 25px;
+                }
+                .theatre-item h4 {
+                    margin-bottom: 10px;
+                    color: #fff;
+                }
+                .time-grid {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
+                .time-pill {
+                    background: transparent;
+                    border: 1px solid var(--primary);
+                    color: var(--primary);
+                    padding: 6px 14px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    font-size: 0.9rem;
+                }
+                .time-pill:hover {
+                    background: var(--primary);
+                    color: white;
+                }
+
+                @media (max-width: 900px) {
+                    .trailer-showtime-section {
+                        grid-template-columns: 1fr;
+                    }
+                    .showtime-box {
+                        padding-left: 0;
+                        border-left: none;
+                        border-top: 1px solid rgba(255,255,255,0.1);
+                        padding-top: 30px;
+                    }
+                }
                 @media (max-width: 768px) {
                     .content-wrapper {
                         flex-direction: column;
@@ -173,7 +295,7 @@ const MovieDetail = () => {
                     }
                 }
             `}</style>
-        </div>
+        </div >
     );
 };
 

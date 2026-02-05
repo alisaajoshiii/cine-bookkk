@@ -10,7 +10,8 @@ export const movies = [
     posterUrl: "https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
     backdrop: "https://image.tmdb.org/t/p/original/s16H6tpK2utvwDtzZ8Qy4qm5dxw.jpg",
     cast: ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver"],
-    category: "now_showing"
+    category: "now_showing",
+    trailerUrl: "https://www.youtube.com/embed/d9MyqF3pKWCCO"
   },
   {
     id: 2,
@@ -23,7 +24,8 @@ export const movies = [
     posterUrl: "https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg",
     backdrop: "https://image.tmdb.org/t/p/original/5P8SmMzSNYikXpxil6BYzJ16611.jpg",
     cast: ["Robert Pattinson", "Zoë Kravitz", "Jeffrey Wright"],
-    category: "now_showing"
+    category: "now_showing",
+    trailerUrl: "https://www.youtube.com/embed/mqqft2x_Aa4"
   },
   {
     id: 3,
@@ -36,7 +38,8 @@ export const movies = [
     posterUrl: "https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
     backdrop: "https://image.tmdb.org/t/p/original/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg",
     cast: ["Cillian Murphy", "Emily Blunt", "Matt Damon"],
-    category: "coming_soon"
+    category: "coming_soon",
+    trailerUrl: "https://www.youtube.com/embed/uYPbbksJxIg"
   },
   {
     id: 4,
@@ -49,7 +52,8 @@ export const movies = [
     posterUrl: "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
     backdrop: "https://image.tmdb.org/t/p/original/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
     cast: ["Shameik Moore", "Hailee Steinfeld", "Oscar Isaac"],
-    category: "now_showing"
+    category: "now_showing",
+    trailerUrl: "https://www.youtube.com/embed/cqGjhVJWtEg"
   },
   {
     id: 5,
@@ -62,7 +66,8 @@ export const movies = [
     posterUrl: "https://image.tmdb.org/t/p/original/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
     backdrop: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
     cast: ["Timothée Chalamet", "Zendaya", "Rebecca Ferguson"],
-    category: "coming_soon"
+    category: "coming_soon",
+    trailerUrl: "https://www.youtube.com/embed/Way9Dexny3w"
   },
   {
     id: 6,
@@ -75,7 +80,8 @@ export const movies = [
     posterUrl: "https://image.tmdb.org/t/p/original/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
     backdrop: "https://image.tmdb.org/t/p/original/h8gHn0OzSb8D50qXNBhVy3mYskP.jpg",
     cast: ["Keanu Reeves", "Donnie Yen", "Bill Skarsgård"],
-    category: "now_showing"
+    category: "now_showing",
+    trailerUrl: "https://www.youtube.com/embed/qEVUtrk8_B4"
   },
   {
     id: 7,
@@ -88,7 +94,8 @@ export const movies = [
     posterUrl: "https://image.tmdb.org/t/p/original/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
     backdrop: "https://image.tmdb.org/t/p/original/sGNY8bbQW1I6b8f1cdd7R2g9w6B.jpg",
     cast: ["Margot Robbie", "Ryan Gosling", "America Ferrera"],
-    category: "now_showing"
+    category: "now_showing",
+    trailerUrl: "https://www.youtube.com/embed/pBk4NYhWNMM"
   }
 ];
 

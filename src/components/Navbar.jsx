@@ -15,7 +15,7 @@ const Navbar = () => {
                 <Link to="/" style={styles.logo}>
                     <Flower color="#9b59b6" size={32} />
                     <span style={{ color: '#4a235a', fontWeight: 'bold', fontSize: '1.5rem', marginLeft: '8px', fontFamily: 'var(--font-heading)' }}>
-                        CineGarden
+                        CineBook
                     </span>
                 </Link>
 

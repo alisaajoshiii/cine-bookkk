@@ -19,7 +19,7 @@ const Cinemas = () => {
                                     <span key={idx} className="badge">{fac}</span>
                                 ))}
                             </div>
-                            <button className="btn btn-primary" style={{ marginTop: 'auto' }}>View Shows</button>
+                            <a href="/movies" className="btn btn-primary" style={{ marginTop: 'auto', textAlign: 'center', textDecoration: 'none' }}>View Shows</a>
                         </div>
                     </div>
                 ))}
@@ -41,7 +41,7 @@ const Cinemas = () => {
                     transition: transform 0.3s;
                 }
                 .cinema-card:hover {
-                    transfrom: translateY(-5px);
+                    transform: translateY(-5px);
                     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
                 }
                 .cinema-img {
