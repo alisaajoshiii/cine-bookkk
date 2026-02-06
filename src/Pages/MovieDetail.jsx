@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { movies } from '../data';
-import { Clock, Star, Calendar, ArrowLeft } from 'lucide-react';
+import { movies, cinemas } from '../seedData';
+import { Clock, Star, ArrowLeft } from 'lucide-react';
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -59,45 +59,45 @@ const MovieDetail = () => {
             </div>
 
             {/* Trailer & Showtimes Section */}
-            <div className="trailer-showtime-section">
-                <div className="trailer-box">
-                    <h3>Watch Trailer</h3>
-                    <div className="video-container">
-                        <iframe
-                            src={movie.trailerUrl}
-                            title={movie.title}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                </div>
-                <div className="showtime-box">
-                    <h3>Showtimes & Tickets</h3>
-                    <p className="date-display">Today, {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</p>
-
-                    <div className="theatre-list">
-                        <div className="theatre-item">
-                            <h4>QFX Cinemas</h4>
-                            <div className="time-grid">
-                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">10:30 AM</button>
-                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">01:15 PM</button>
-                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">04:45 PM</button>
-                            </div>
+            <div className="container">
+                <div className="trailer-showtime-section">
+                    <div className="trailer-box">
+                        <h3>Watch Trailer</h3>
+                        <div className="video-container">
+                            <iframe
+                                src={movie.trailerUrl}
+                                title={movie.title}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
                         </div>
+                    </div>
+                    <div className="showtime-box">
+                        <h3>Showtimes & Tickets</h3>
+                        <p className="date-display">Today, {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</p>
 
-                        <div className="theatre-item">
-                            <h4>Big Movies</h4>
-                            <div className="time-grid">
-                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">11:00 AM</button>
-                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">03:30 PM</button>
-                                <button onClick={() => navigate(`/book/${movie.id}`)} className="time-pill">07:00 PM</button>
-                            </div>
+                        <div className="theatre-list">
+                            {cinemas.map(cinema => (
+                                <div className="theatre-item" key={cinema.id}>
+                                    <h4>{cinema.name}</h4>
+                                    <div className="time-grid">
+                                        {cinema.showtimes.map((time, idx) => (
+                                            <button
+                                                key={idx}
+                                                onClick={() => navigate(`/book/${movie.id}`)}
+                                                className="time-pill"
+                                            >
+                                                {time}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <style>{`
                 .detail-page {
@@ -127,6 +127,15 @@ const MovieDetail = () => {
                     gap: 8px;
                     margin-bottom: 20px;
                     font-size: 1.1rem;
+                    background: rgba(0,0,0,0.5);
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    border: none;
+                    cursor: pointer;
+                    width: fit-content;
+                }
+                .back-btn:hover {
+                    background: rgba(0,0,0,0.7);
                 }
                 .content-wrapper {
                     display: flex;
@@ -145,11 +154,13 @@ const MovieDetail = () => {
                 .info-section h1 {
                     font-size: 3rem;
                     margin-bottom: 20px;
+                    color: #fff;
+                    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
                 }
                 .meta-info {
                     display: flex;
                     gap: 20px;
-                    color: var(--text-secondary);
+                    color: #ddd;
                     margin-bottom: 30px;
                 }
                 .meta-item {
@@ -159,13 +170,14 @@ const MovieDetail = () => {
                 }
                 .description {
                     font-size: 1.1rem;
-                    color: #ddd;
+                    color: #ccc;
                     margin-bottom: 30px;
                     line-height: 1.8;
                 }
                 .cast-section h3 {
                     margin-bottom: 15px;
                     font-size: 1.2rem;
+                    color: #fff;
                 }
                 .cast-list {
                     display: flex;
@@ -173,14 +185,16 @@ const MovieDetail = () => {
                     margin-bottom: 30px;
                 }
                 .cast-pill {
-                    background: var(--surface);
+                    background: rgba(255,255,255,0.1);
                     padding: 8px 16px;
                     border-radius: 20px;
                     font-size: 0.9rem;
+                    color: #fff;
                 }
                 .price-tag {
                     font-size: 1.5rem;
                     margin-bottom: 20px;
+                    color: #fff;
                 }
                 .price-tag span {
                     color: var(--primary);
@@ -193,7 +207,10 @@ const MovieDetail = () => {
                     font-size: 1.2rem;
                     font-weight: bold;
                     border-radius: 8px;
-                    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+                    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.4);
+                    border: none;
+                    cursor: pointer;
+                    transition: transform 0.2s;
                 }
                 .book-btn-lg:hover {
                     background: var(--primary-hover);
@@ -209,12 +226,14 @@ const MovieDetail = () => {
                     padding: 30px;
                     border-radius: 20px;
                     border: 1px solid rgba(255,255,255,0.05);
+                    margin-top: 40px;
                 }
                 .trailer-box h3, .showtime-box h3 {
                     font-size: 1.5rem;
                     margin-bottom: 20px;
                     border-left: 4px solid var(--primary);
                     padding-left: 15px;
+                    color: #fff;
                 }
                 .video-container {
                     position: relative;
@@ -235,6 +254,8 @@ const MovieDetail = () => {
                 .showtime-box {
                     padding-left: 20px;
                     border-left: 1px solid rgba(255,255,255,0.1);
+                    max-height: 500px;
+                    overflow-y: auto;
                 }
                 .date-display {
                     color: var(--text-secondary);
@@ -247,6 +268,7 @@ const MovieDetail = () => {
                 .theatre-item h4 {
                     margin-bottom: 10px;
                     color: #fff;
+                    font-size: 1.1rem;
                 }
                 .time-grid {
                     display: flex;

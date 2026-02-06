@@ -1,5 +1,5 @@
 import React from 'react';
-import { cinemas } from '../data';
+import { cinemas } from '../seedData';
 import { MapPin, Film } from 'lucide-react';
 
 const Cinemas = () => {

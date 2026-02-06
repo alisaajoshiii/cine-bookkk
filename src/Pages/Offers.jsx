@@ -1,5 +1,5 @@
 import React from 'react';
-import { offers } from '../data';
+import { offers } from '../seedData';
 import { Gift, Copy } from 'lucide-react';
 
 const Offers = () => {

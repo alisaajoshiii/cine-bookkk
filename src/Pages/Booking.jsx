@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { movies } from '../data';
+import { movies } from '../seedData';
 import { ArrowLeft, Check } from 'lucide-react';
 
 const Booking = () => {
